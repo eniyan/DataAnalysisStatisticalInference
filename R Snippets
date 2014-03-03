@@ -1,0 +1,62 @@
+
+load(url("<URL>"))
+
+# The object <cdc> is a data matrix, with each row representing a case, and each column representing a variable. R calls this data format a data frame
+
+# Variables? Cases?
+
+
+# To see what kind of data your data frame contains, you can use the names function in R. This function returns a vector of variable names in which each name corresponds to a question that was asked in the survey
+
+# Print the names of the variables:
+names(<your_data_frame>)
+  displays the variables
+dim(<your_data_frame>)
+  displays the number of cases and variables
+
+#You can have a look at the first or last few entries (rows) of your data frame with the commands head and tail, respectively.
+head(<your_data_frame>)
+tail(<your_data_frame>)
+
+
+# View the head or tail of variables:
+head (<your_data_frame>$<variable1>)  
+tail (<your_data_frame>$<variable1>)
+head (cdc$height)
+
+
+#The function summary returns a numerical summary: minimum, first quartile, median, mean, third quartile, and maximum.
+mean (cdc$weight)
+var (cdc$weight)
+median(cdc$weight)
+summary(cdc$weight)
+
+
+#The function table counts the number of times each kind of category occurs in a variable
+
+#To create the "frequency table":
+table(cdc$genhlth)
+
+#you can get the relative frequencies by dividing the table by the amount of observations in your data frame
+table(cdc$genhlth)/2000
+
+
+#Barplot
+barplot(table(cdc$smoke100))
+
+
+#MosaicPlot Eg.
+gender_smokers = table(cdc$gender, cdc$smoke100)
+gender_smokers
+mosaicplot(gender_smokers)
+
+
+#It was mentioned that R stores data in data frames, which you might think of as a type of spreadsheet. Each row is a different observation (a different respondent) and each column is a different variable
+
+# Create the subsets:
+height_1337 = cdc[1337, 5]
+weight_111 = cdc [111,6]
+
+first8 = cdc[1:8, 3:5]
+wt_gen_10_20 =cdc[10:20,6:9] 
+
